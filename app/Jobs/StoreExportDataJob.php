@@ -2,7 +2,8 @@
 
 namespace App\Jobs;
 
-use Illuminate\Auth\Authenticatable;
+use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
@@ -11,7 +12,7 @@ class StoreExportDataJob implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        protected Authenticatable $user,
+        protected Authenticatable|User $user,
         protected string $filename
     ) {
     }

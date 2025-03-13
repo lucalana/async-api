@@ -3,7 +3,8 @@
 namespace App\Jobs;
 
 use App\Mail\ExportMail;
-use \Illuminate\Auth\Authenticatable;
+use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Mail;
@@ -13,7 +14,7 @@ class SendExportEmailJob implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        protected Authenticatable $user,
+        protected Authenticatable|User $user,
         protected string $filename
     ) {
     }
