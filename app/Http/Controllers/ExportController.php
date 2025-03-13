@@ -6,6 +6,7 @@ use App\Http\Resources\ExportResource;
 use App\Jobs\RemoveExportFileJob;
 use App\Models\Export;
 use App\Traits\ApiResponses;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,9 +14,10 @@ class ExportController extends Controller
 {
     use ApiResponses;
 
-    public function index()
+    public function index(Request $request)
     {
-        $exports = Export::paginate(20, ['file_url', 'created_at']);
+        $page = intval($request->get('page', 1));
+        $exports = Export::paginate(20, ['file_url', 'created_at'], $page);
         return $this->success(ExportResource::collection($exports));
     }
 
