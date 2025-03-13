@@ -8,7 +8,7 @@ use App\Jobs\StoreExportDataJob;
 use App\Jobs\StoreExportFileJob;
 use App\Services\NbaService;
 use App\Traits\ApiResponses;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {

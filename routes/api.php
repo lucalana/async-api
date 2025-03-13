@@ -13,6 +13,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::middleware('auth:sanctum')->prefix('teams')->group(function () {
     Route::get('/', [TeamController::class, 'index']);
     Route::get('/export', [TeamController::class, 'export']);
+    Route::get('/export/download/{fileName}', [ExportController::class, 'download'])
+        ->name('export-download');
     Route::get('/export/history', [ExportController::class, 'index']);
     Route::delete('/export/history/{export}', [ExportController::class, 'destroy']);
 });

@@ -17,7 +17,7 @@ class RemoveExportFileJob implements ShouldQueue
 
     public function handle(): void
     {
-        Storage::delete($this->export->filename);
+        Storage::delete($this->export->file_url);
         $this->export->delete();
     }
 }

@@ -14,6 +14,10 @@ class ExportResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [];
+        return [
+            'fileaName' => $this->file_url,
+            'createdAt' => $this->created_at,
+            'downloadUrl' => route('export-download', $this->file_url)
+        ];
     }
 }
